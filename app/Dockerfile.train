@@ -1,0 +1,16 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy raw data and scripts
+COPY raw_titanic.csv ../raw_titanic.csv
+COPY data_processing.py .
+COPY model_training.py .
+
+RUN python data_processing.py
+RUN python model_training.py
+
+CMD ["echo", "Training finished"]
