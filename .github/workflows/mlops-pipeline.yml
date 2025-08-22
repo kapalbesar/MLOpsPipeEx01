@@ -30,7 +30,7 @@ jobs:
         python app/data_processing.py
       # The data_processing.py writes processed_titanic.csv
     - name: Upload processed data as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: processed-data
         path: app/processed_titanic.csv
@@ -64,7 +64,7 @@ jobs:
       run: python app/model_training.py
 
     - name: Upload model artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: model-artifact
         path: app/titanic_model.joblib
